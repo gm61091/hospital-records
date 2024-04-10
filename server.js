@@ -3,7 +3,7 @@ const pgp = require('pg-promise')();
 const app = express();
 const PORT = 3000;
 
-const db = pgp('postgres://username:password@localhost:5432/HospitalRecords'); // Update with your database credentials
+const db = pgp('postgres://qonnxkqn:yAamuth4AZ0bhZEGuoBLeR6tfHO-wXYC@raja.db.elephantsql.com/qonnxkqn'); // Update with your database credentials
 
 app.use(express.json());
 
@@ -52,5 +52,5 @@ app.get('/patients/newWing', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port: ${PORT}.`);
+    console.log(`Server is running on port 3000.`);
 });
