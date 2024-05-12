@@ -38,6 +38,7 @@ app.put('/patients/addRoomNumberColumn', async (req, res) => {
     res.send('Column "room_number" added to table "patients"');
 });
 
+
 // Update the table so that all patients admitted after 2023-01-01 have their room_number set to "New Wing"
 app.put('/patients/updateRoomNumber', async (req, res) => {
     await db.none('UPDATE patients SET room_number = $1 WHERE admission_date > $2', ['New Wing', '2023-01-01']);
@@ -45,11 +46,13 @@ app.put('/patients/updateRoomNumber', async (req, res) => {
 
 });
 
+
 // Show the names and conditions of patients in the "New Wing"
 app.get('/patients/newWing', async (req, res) => {
     const newWingPatients = await db.any('SELECT name, condition FROM patients WHERE room_number = $1', ['New Wing']);
     res.json(newWingPatients);
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server is running on port 3000.`);
